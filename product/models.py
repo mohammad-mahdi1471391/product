@@ -10,7 +10,7 @@ class Category(models.Model):
     title = models.CharField(_('title'),max_length=50)
     description = models.TextField(_('description'),blank=True)
     avatar = models.ImageField(_('avatar'),blank=True,upload_to='categories')
-    is_enabled = models.BooleanField(_('is enabled'), default=True)
+    is_enable = models.BooleanField(_('is enabled'), default=True)
     created_time = models.DateTimeField(_('created time'),auto_now_add=True)
     updated_time = models.DateTimeField(_('updated time') , auto_now=True)
 
@@ -19,6 +19,10 @@ class Category(models.Model):
         db_table = 'categories'
         verbose_name = _('Category')
         verbose_name_plural = _('Categories')
+
+
+    def __str__(self):
+        return f'{self.pk}_{self.title}'
 
 class Products(models.Model):
     title = models.CharField(_('title'), max_length=50)
